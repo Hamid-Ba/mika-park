@@ -30,6 +30,7 @@ urlpatterns = [
     path("api/aboutus/", include("aboutus.urls")),
     path("api/contactus/", include("contactus.urls")),
     path("api/siteinfo/", include("siteinfo.urls")),
+    path("api/project/", include("project.urls")),
 ]
 
 if settings.DEBUG:
