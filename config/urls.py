@@ -33,6 +33,8 @@ urlpatterns = [
     path("api/project/", include("project.urls")),
     path("api/cooperation/", include("cooperation.urls")),
     path("api/gallery/", include("gallery.urls")),
+    path("api/agent/", include("agent.urls")),
+    
 ]
 
 if settings.DEBUG:

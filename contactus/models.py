@@ -37,7 +37,7 @@ class Address(models.Model):
     """Address"""
 
     address = models.CharField(
-        max_length=225, null=True, blank=True, verbose_name="عنوان"
+        max_length=225, null=True, blank=True, verbose_name="آدرس"
     )
 
     class Meta:
