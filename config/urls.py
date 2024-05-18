@@ -32,6 +32,7 @@ urlpatterns = [
     path("api/siteinfo/", include("siteinfo.urls")),
     path("api/project/", include("project.urls")),
     path("api/cooperation/", include("cooperation.urls")),
+    path("api/gallery/", include("gallery.urls")),
 ]
 
 if settings.DEBUG:

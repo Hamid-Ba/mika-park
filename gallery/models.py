@@ -23,6 +23,8 @@ class Gallery(models.Model):
     image = models.ImageField(
         null=False, upload_to=gallery_image_file_path, verbose_name="تصویر"
     )
+    
+    is_show = models.BooleanField(default=False, verbose_name="قابل نمایش در سایت")
 
     def __str__(self):
         if self.title:
