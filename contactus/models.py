@@ -23,9 +23,7 @@ class Message(models.Model):
     text = models.CharField(
         max_length=1200, null=False, blank=False, verbose_name="متن پیام"
     )
-    create_date = models.DateTimeField(
-        auto_now_add=True, verbose_name="زمان ارسال"
-    )
+    create_date = models.DateTimeField(auto_now_add=True, verbose_name="زمان ارسال")
 
     def __str__(self) -> str:
         return f"{self.full_name} - {self.phone}"

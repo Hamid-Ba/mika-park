@@ -13,6 +13,7 @@ class MessageAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ["id", "full_name", "phone", "create_date"]
     list_display_links = ["id", "full_name", "phone"]
 
+
 class AddressAdmin(admin.ModelAdmin):
     """Address Admin Model"""
 

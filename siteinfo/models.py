@@ -140,7 +140,7 @@ class FooterLink(models.Model):
         max_length=1,
         default=FooterLinkType.FastLink,
         choices=FooterLinkType.choices,
-        verbose_name="نوع لینک"
+        verbose_name="نوع لینک",
     )
 
     class Meta:

@@ -6,6 +6,7 @@ from config import pagination
 
 project_service = project_services.ProjectServices()
 
+
 class ProjectViewSet(
     mixins.RetrieveModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet
 ):

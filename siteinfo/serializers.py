@@ -9,9 +9,10 @@ from rest_framework import serializers
 
 class HomeHeaderSerializer(serializers.ModelSerializer):
     """Home Header Serializer"""
+
     logo = gallery_serial.GallerySerializer(many=False)
     heading_image = gallery_serial.GallerySerializer(many=False)
-    
+
     class Meta:
         """Meta Class"""
 
@@ -21,8 +22,9 @@ class HomeHeaderSerializer(serializers.ModelSerializer):
 
 class ServiceSerializer(serializers.ModelSerializer):
     """Service Serializer"""
+
     logo = gallery_serial.GallerySerializer(many=False)
-    
+
     class Meta:
         """Meta Class"""
 
@@ -32,6 +34,7 @@ class ServiceSerializer(serializers.ModelSerializer):
 
 class FeatureSerializer(serializers.ModelSerializer):
     """Feature Serializer"""
+
     logo = gallery_serial.GallerySerializer(many=False)
 
     class Meta:
@@ -43,6 +46,7 @@ class FeatureSerializer(serializers.ModelSerializer):
 
 class FooterSerializer(serializers.ModelSerializer):
     """Footer Serializer"""
+
     logo = gallery_serial.GallerySerializer(many=False)
 
     class Meta:
@@ -64,6 +68,7 @@ class FooterLinkSerializer(serializers.ModelSerializer):
 
 class CommunicationSerializer(serializers.ModelSerializer):
     """Communication Serializer"""
+
     logo = gallery_serial.GallerySerializer(many=False)
 
     class Meta:

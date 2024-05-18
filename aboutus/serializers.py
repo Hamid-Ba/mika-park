@@ -9,6 +9,7 @@ from rest_framework import serializers
 
 class AboutUsSerializer(serializers.ModelSerializer):
     """About Us Serializer"""
+
     image = gallery_serial.GallerySerializer(many=False)
 
     class Meta:
