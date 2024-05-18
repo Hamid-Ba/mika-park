@@ -36,6 +36,7 @@ urlpatterns = [
     path("api/gallery/", include("gallery.urls")),
     path("api/agent/", include("agent.urls")),
     path("api/blog/", include("blog.urls")),
+    path("api/new/", include("new.urls")),
     
 ]
 

@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     "cooperation",
     "contactus",
     "gallery",
+    "new",
     "project",
     "siteinfo",
 ]
