@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "taggit",
     "aboutus",
     "account",
+    "cooperation",
     "contactus",
     "gallery",
     "project",

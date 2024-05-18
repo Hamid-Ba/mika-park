@@ -31,6 +31,7 @@ urlpatterns = [
     path("api/contactus/", include("contactus.urls")),
     path("api/siteinfo/", include("siteinfo.urls")),
     path("api/project/", include("project.urls")),
+    path("api/cooperation/", include("cooperation.urls")),
 ]
 
 if settings.DEBUG:
