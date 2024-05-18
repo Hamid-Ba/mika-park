@@ -24,9 +24,7 @@ class BlogsView(generics.ListAPIView):
     serializer_class = serializers.BlogSerializer
 
     def get_queryset(self):
-        return self.queryset.order_by(
-            "-id"
-        )
+        return self.queryset.order_by("-id")
 
 
 class LatestBlogsView(generics.ListAPIView):
@@ -52,6 +50,4 @@ class SearchBlogsAPI(generics.ListAPIView):
     search_fields = ["title", "slug", "short_desc", "category__title"]
 
     def get_queryset(self):
-        return self.queryset.order_by(
-            "-id"
-        )
+        return self.queryset.order_by("-id")

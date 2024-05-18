@@ -4,6 +4,7 @@ from rest_framework.test import APITestCase
 
 from blog import models
 
+
 class BlogTestCase(APITestCase):
     def setUp(self):
         self.blog1 = models.Blog.objects.create(

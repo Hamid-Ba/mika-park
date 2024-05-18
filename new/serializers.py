@@ -25,3 +25,11 @@ class LatestNewSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.New
         fields = ["title", "slug", "short_desc", "publish_date", "image"]
+
+
+class NewsletterMemberSerializer(serializers.ModelSerializer):
+    """Newsletter Member Serializer"""
+
+    class Meta:
+        model = models.NewsletterMember
+        fields = "__all__"

@@ -2,10 +2,11 @@ from rest_framework import generics, response, status
 
 from agent import models, serializers
 
+
 class AgentAPI(generics.RetrieveAPIView):
     queryset = models.Agent.objects.all()
     serializer_class = serializers.AgentSerializer
-    
+
     def get(self, request, *args, **kwargs):
         if self.queryset.count():
             return response.Response(

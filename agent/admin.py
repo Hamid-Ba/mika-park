@@ -2,9 +2,11 @@ from django.contrib import admin
 
 from agent import models
 
+
 class BranchInline(admin.TabularInline):
     model = models.Agent_Branch
     extra = 1
+
 
 class AgentAdmin(admin.ModelAdmin):
     """Agent Admin Model"""
@@ -12,5 +14,5 @@ class AgentAdmin(admin.ModelAdmin):
     list_display = ["id", "name"]
     list_display_links = ["id"]
     list_editable = ["name"]
-    
+
     inlines = [BranchInline]

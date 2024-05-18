@@ -37,7 +37,6 @@ urlpatterns = [
     path("api/agent/", include("agent.urls")),
     path("api/blog/", include("blog.urls")),
     path("api/new/", include("new.urls")),
-    
 ]
 
 if settings.DEBUG:

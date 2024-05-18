@@ -51,7 +51,6 @@ class BlogModelTest(TestCase):
         max_length = blog._meta.get_field("image_alt").max_length
         self.assertEquals(max_length, 72)
 
-
     def test_image_related_name(self):
         blog = models.Blog.objects.filter(title="TestBlog").first()
         related_name = blog._meta.get_field("image").related_query_name()

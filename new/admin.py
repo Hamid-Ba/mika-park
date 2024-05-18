@@ -11,5 +11,11 @@ class NewAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     search_fields = ("title", "short_desc", "desc")
 
 
+class NewsletterMemberAdmin(admin.ModelAdmin):
+    list_display = ("id", "phone", "create_date")
+    list_display_links = ("id", "phone")
+    search_fields = ("phone",)
+
 
 admin.site.register(models.New, NewAdmin)
+admin.site.register(models.NewsletterMember, NewsletterMemberAdmin)

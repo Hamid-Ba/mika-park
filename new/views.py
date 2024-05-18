@@ -56,3 +56,10 @@ class SearchNewsAPI(generics.ListAPIView):
         return self.queryset.filter(publish_date__lte=timezone.now()).order_by(
             "-publish_date"
         )
+
+
+class SendNewsletterRequestAPI(generics.CreateAPIView):
+    """Send Newsletter Request"""
+
+    queryset = models.NewsletterMember.objects.all()
+    serializer_class = serializers.NewsletterMemberSerializer

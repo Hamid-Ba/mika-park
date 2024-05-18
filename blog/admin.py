@@ -11,5 +11,4 @@ class BlogAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     search_fields = ("title", "short_desc", "desc")
 
 
-
 admin.site.register(models.Blog, BlogAdmin)
