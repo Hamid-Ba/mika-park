@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "aboutus",
     "account",
     "agent",
+    "blog",
     "cooperation",
     "contactus",
     "gallery",
