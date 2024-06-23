@@ -43,7 +43,7 @@ class ProjectListSerializer(serializers.ModelSerializer):
 class FeatureSerializer(serializers.ModelSerializer):
     """Feature Serializer"""
 
-    # url = serializers.URLField()
+    logo = gallery_serial.GallerySerializer(many=False)
 
     class Meta:
         """Meta Class"""
@@ -51,12 +51,12 @@ class FeatureSerializer(serializers.ModelSerializer):
         model = models.Feature
         fields = "__all__"
 
-    def to_representation(self, instance):
-        rep = super().to_representation(instance)
+    # def to_representation(self, instance):
+    #     rep = super().to_representation(instance)
 
-        rep["url"] = instance.image.url
+    #     rep["url"] = instance.logo.url
 
-        return rep
+    #     return rep
 
 
 class ProjectSerializer(serializers.ModelSerializer):
