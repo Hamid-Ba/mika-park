@@ -32,7 +32,7 @@ class Feature(models.Model):
     )
 
     def __str__(self):
-        return f"{self.title}-{self.key}"
+        return f"{self.title}"
 
     class Meta:
         verbose_name = _("امکانات")
