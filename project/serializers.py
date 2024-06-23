@@ -43,7 +43,7 @@ class ProjectListSerializer(serializers.ModelSerializer):
 class FeatureSerializer(serializers.ModelSerializer):
     """Feature Serializer"""
 
-    url = serializers.URLField()
+    # url = serializers.URLField()
 
     class Meta:
         """Meta Class"""
