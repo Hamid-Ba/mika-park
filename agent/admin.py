@@ -16,3 +16,5 @@ class AgentAdmin(admin.ModelAdmin):
     list_editable = ["name"]
 
     inlines = [BranchInline]
+
+admin.site.register(models.Agent, AgentAdmin)
