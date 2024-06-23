@@ -11,9 +11,9 @@ class BranchInline(admin.TabularInline):
 class AgentAdmin(admin.ModelAdmin):
     """Agent Admin Model"""
 
-    list_display = ["id", "name"]
+    list_display = ["id"]
     list_display_links = ["id"]
-    list_editable = ["name"]
+    # list_editable = ["name"]
 
     inlines = [BranchInline]
 
