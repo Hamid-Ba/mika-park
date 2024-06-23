@@ -19,6 +19,6 @@ class GallerySerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         rep = super().to_representation(instance)
         
-        rep["url"] = settings["BACK_URL"] + instance.image.url
+        rep["url"] = settings.BACK_URL + instance.image.url
 
         return rep
