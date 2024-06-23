@@ -97,7 +97,7 @@ class Project_Property(models.Model):
     )
 
     def __str__(self):
-        return f"{self.project.title}-{self.key}"
+        return f"{self.project.title}-{self.value}"
 
     class Meta:
         verbose_name = _("ویژگی پروژه")
