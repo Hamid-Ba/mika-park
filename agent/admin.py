@@ -17,4 +17,5 @@ class AgentAdmin(admin.ModelAdmin):
 
     inlines = [BranchInline]
 
+
 admin.site.register(models.Agent, AgentAdmin)

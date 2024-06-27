@@ -18,11 +18,12 @@ class GallerySerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         rep = super().to_representation(instance)
-        
+
         rep["url"] = settings.BACK_URL + instance.image.url
 
         return rep
-    
+
+
 class MediaSerializer(serializers.ModelSerializer):
     """Media Serializer"""
 
@@ -34,7 +35,7 @@ class MediaSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         rep = super().to_representation(instance)
-        
+
         rep["url"] = settings.BACK_URL + instance.file.url
 
         return rep

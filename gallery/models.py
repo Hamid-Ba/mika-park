@@ -13,6 +13,7 @@ def gallery_image_file_path(instance, filename):
 
     return os.path.join("uploads", "gallery", filename)
 
+
 def medial_video_file_path(instance, filename):
     """Generate file path for media"""
     ext = os.path.splitext(filename)[1]

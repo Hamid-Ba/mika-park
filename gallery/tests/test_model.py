@@ -19,7 +19,8 @@ class GalleryTest(TestCase):
             self.assertEqual(getattr(created_gallery, key), value)
 
         self.assertEqual(created_gallery.title, gallery["title"])
-        
+
+
 class MediaTest(TestCase):
     """Test Media Model"""
 

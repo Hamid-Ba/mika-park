@@ -1,8 +1,7 @@
-from rest_framework import response, status, generics, mixins, viewsets
+from rest_framework import mixins, viewsets
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter
 
-from project import models, serializers, services
+from project import serializers
 from project.services import project_services
 from config import pagination
 
