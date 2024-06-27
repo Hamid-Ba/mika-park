@@ -20,3 +20,9 @@ class ProjectViewSet(
         DjangoFilterBackend,
     ]
     filterset_fields = ["type"]
+
+    def get_serializer_class(self):
+        if self.action == "retrieve":
+            self.serializer_class = serializers.ProjectSerializer
+
+        return self.serializer_class

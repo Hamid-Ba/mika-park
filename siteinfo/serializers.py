@@ -11,6 +11,7 @@ class HomeHeaderSerializer(serializers.ModelSerializer):
     """Home Header Serializer"""
 
     logo = gallery_serial.GallerySerializer(many=False)
+    media = gallery_serial.MediaSerializer(many=False)
     heading_image = gallery_serial.GallerySerializer(many=False)
 
     class Meta:

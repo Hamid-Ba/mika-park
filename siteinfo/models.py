@@ -5,7 +5,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from config.validators import phone_validator
-from gallery.models import Gallery
+from gallery.models import Gallery, Media
 
 
 class HomeHeader(models.Model):
@@ -20,15 +20,19 @@ class HomeHeader(models.Model):
     heading2 = models.CharField(
         max_length=125, null=True, blank=True, verbose_name="2 سر تیتر"
     )
-    paragraph = models.CharField(
-        max_length=700, null=True, blank=True, verbose_name="پاراگرف"
-    )
+    paragraph = models.TextField(null=True, blank=True, verbose_name="پاراگرف")
     phone = models.CharField(
         max_length=21,
         null=True,
         blank=True,
         validators=[phone_validator],
         verbose_name="شماره موبایل",
+    )
+    middle_heading = models.CharField(
+        max_length=125, null=True, blank=True, verbose_name="سر تیتر وسط صفحه"
+    )
+    middle_paragraph = models.TextField(
+        null=True, blank=True, verbose_name="پاراگرف وسط صفحه"
     )
 
     logo = models.ForeignKey(
@@ -46,6 +50,14 @@ class HomeHeader(models.Model):
         on_delete=models.SET_NULL,
         related_name="heading",
         verbose_name="تصویر تیتر",
+    )
+    media = models.ForeignKey(
+        Media,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="media",
+        verbose_name="ویدئو",
     )
 
     class Meta:
