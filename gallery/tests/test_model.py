@@ -19,3 +19,17 @@ class GalleryTest(TestCase):
             self.assertEqual(getattr(created_gallery, key), value)
 
         self.assertEqual(created_gallery.title, gallery["title"])
+        
+class MediaTest(TestCase):
+    """Test Media Model"""
+
+    def test_create_media_model_should_work_properly(self):
+        """Test Create Media Model"""
+        media = {"title": "New Pic", "file": "no_image.jpg"}
+
+        created_media = models.Media.objects.create(**media)
+
+        for key, value in media.items():
+            self.assertEqual(getattr(created_media, key), value)
+
+        self.assertEqual(created_media.title, media["title"])

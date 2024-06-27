@@ -7,11 +7,18 @@ from django.utils.translation import gettext_lazy as _
 
 
 def gallery_image_file_path(instance, filename):
-    """Generate file path for category image"""
+    """Generate file path for image"""
     ext = os.path.splitext(filename)[1]
     filename = f"{uuid4()}.{ext}"
 
     return os.path.join("uploads", "gallery", filename)
+
+def medial_video_file_path(instance, filename):
+    """Generate file path for media"""
+    ext = os.path.splitext(filename)[1]
+    filename = f"{uuid4()}.{ext}"
+
+    return os.path.join("uploads", "media", filename)
 
 
 class Gallery(models.Model):
@@ -34,3 +41,23 @@ class Gallery(models.Model):
     class Meta:
         verbose_name = _("گالری")
         verbose_name_plural = _("گالری")
+
+
+class Media(models.Model):
+    """Media model"""
+
+    title = models.CharField(
+        max_length=125, blank=True, null=True, verbose_name="عنوان"
+    )
+    file = models.ImageField(
+        null=False, upload_to=medial_video_file_path, verbose_name="فایل"
+    )
+
+    def __str__(self):
+        if self.title:
+            return self.title
+        return self.file
+
+    class Meta:
+        verbose_name = _("مدیا")
+        verbose_name_plural = _("مدیا")

@@ -18,5 +18,17 @@ class GalleryAdmin(admin.ModelAdmin):
     def image_path(self, obj):
         return obj.image.path
 
+class MediaAdmin(admin.ModelAdmin):
+    """Media Admin Model"""
+
+    list_display = ["id", "title", "file_path"]
+    list_display_links = ["id", "title"]
+    sortable_by = ["title"]
+    search_fields = ["title"]
+
+    def file_path(self, obj):
+        return obj.file.path
+
 
 admin.site.register(models.Gallery, GalleryAdmin)
+admin.site.register(models.Media, MediaAdmin)
