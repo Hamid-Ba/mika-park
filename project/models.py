@@ -51,6 +51,11 @@ class Project(models.Model):
     gallery = models.ManyToManyField(
         gallery_models.Gallery, related_name="projects", verbose_name="گالری"
     )
+    
+    media = models.ManyToManyField(
+        gallery_models.Media, related_name="projects", verbose_name="مدیا"
+    )
+    
     features = models.ManyToManyField(
         Feature, related_name="projects", verbose_name="امکانات"
     )

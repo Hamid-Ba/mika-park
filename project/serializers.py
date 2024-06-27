@@ -63,6 +63,7 @@ class ProjectSerializer(serializers.ModelSerializer):
     """Project Serializer"""
 
     gallery = gallery_serial.GallerySerializer(many=True)
+    media = gallery_serial.MediaSerializer(many=True)
     features = FeatureSerializer(many=True)
     specs = SpecificationsSerializer(many=True)
     props = PropertySerializer(many=True)
