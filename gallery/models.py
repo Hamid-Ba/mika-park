@@ -50,7 +50,7 @@ class Media(models.Model):
     title = models.CharField(
         max_length=125, blank=True, null=True, verbose_name="عنوان"
     )
-    file = models.ImageField(
+    file = models.FileField(
         null=False, upload_to=medial_video_file_path, verbose_name="فایل"
     )
 
