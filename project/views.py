@@ -1,4 +1,6 @@
 from rest_framework import response, status, generics, mixins, viewsets
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter
 
 from project import models, serializers, services
 from project.services import project_services
@@ -15,9 +17,7 @@ class ProjectViewSet(
     queryset = project_service.get_projects()
     serializer_class = serializers.ProjectListSerializer
     pagination_class = pagination.StandardPagination
-
-    def get_serializer_class(self):
-        if self.action == "retrieve":
-            self.serializer_class = serializers.ProjectSerializer
-
-        return self.serializer_class
+    filter_backends = [
+        DjangoFilterBackend,
+    ]
+    filterset_fields = ["type"]

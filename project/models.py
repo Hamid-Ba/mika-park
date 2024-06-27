@@ -41,12 +41,17 @@ class Feature(models.Model):
 
 class Project(models.Model):
     """Project Model"""
-
+    class Type(models.TextChoices):
+        Processing = "P", "پروژهای در حال انجام"
+        Done = "D", "پروژهای انجام شده"
+        
+    
     title = models.CharField(max_length=150, verbose_name="عنوان")
     desc = RichTextField(blank=True, null=True, verbose_name="توضیحات")
     image = models.ImageField(
         null=False, upload_to=project_image_file_path, verbose_name="تصویر"
     )
+    type = models.CharField(max_length=2, choices=Type.choices, default=Type.Processing)
 
     gallery = models.ManyToManyField(
         gallery_models.Gallery, related_name="projects", verbose_name="گالری"

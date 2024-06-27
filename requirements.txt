@@ -19,3 +19,4 @@ django-jalali-date==1.0.2
 psycopg2==2.9.3
 model-bakery==1.11.0
 black==23.1.0
+django-filter
