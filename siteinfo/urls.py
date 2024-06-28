@@ -15,4 +15,5 @@ urlpatterns = [
         views.CommunicationListAPI.as_view(),
         name="communication_list",
     ),
+    path("critic/", views.CreateCriticAPI.as_view(), name="send_critic"),
 ]

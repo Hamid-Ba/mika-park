@@ -68,3 +68,9 @@ class CommunicationListAPI(generics.ListAPIView):
 
     queryset = models.Communication.objects.all()
     serializer_class = serializers.CommunicationSerializer
+
+class CreateCriticAPI(generics.CreateAPIView):
+    """Create Critic View"""
+
+    queryset = models.Critic.objects.all()
+    serializer_class = serializers.CriticSerializer
