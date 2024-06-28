@@ -39,7 +39,7 @@ class BlockSpecificationInline(admin.TabularInline):
 class BlockAdmin(admin.ModelAdmin):
     """Block Admin Model"""
 
-    list_display = ["id", "title"]
+    list_display = ["id", "title", "project"]
     list_display_links = ["id", "title"]
     search_fields = ["title"]
     inlines = [BlockSpecificationInline]
