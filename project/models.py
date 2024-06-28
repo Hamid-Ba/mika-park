@@ -153,7 +153,7 @@ class Block_Specification(models.Model):
     )
 
     def __str__(self):
-        return f"{self.project.title}-{self.key}"
+        return f"{self.block.title}-{self.key}"
 
     class Meta:
         verbose_name = _("مشخصه بلوک")
