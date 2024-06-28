@@ -52,7 +52,13 @@ class Project(models.Model):
         null=False, upload_to=project_image_file_path, verbose_name="تصویر"
     )
     type = models.CharField(max_length=2, choices=Type.choices, default=Type.Processing)
-
+    google_map_url = models.URLField(
+        max_length=500,
+        blank=True,
+        null=True,
+        error_messages={"invalid": "مقدار وارد شده صحیح نم باشد"},
+    )
+    
     gallery = models.ManyToManyField(
         gallery_models.Gallery, related_name="projects", verbose_name="گالری"
     )
