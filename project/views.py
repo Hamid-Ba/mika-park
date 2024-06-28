@@ -2,10 +2,11 @@ from rest_framework import mixins, viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 
 from project import serializers
-from project.services import project_services
+from project.services import project_services, block_services
 from config import pagination
 
 project_service = project_services.ProjectServices()
+block_service = block_services.BlockServices()
 
 
 class ProjectViewSet(
@@ -26,3 +27,11 @@ class ProjectViewSet(
             self.serializer_class = serializers.ProjectSerializer
 
         return self.serializer_class
+
+class BlockViewSet(
+    mixins.RetrieveModelMixin, viewsets.GenericViewSet
+):
+    """Block View Set"""
+
+    queryset = block_service.get_blocks()
+    serializer_class = serializers.BlockListSerializer

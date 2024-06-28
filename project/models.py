@@ -118,3 +118,35 @@ class Project_Property(models.Model):
     class Meta:
         verbose_name = _("ویژگی پروژه")
         verbose_name_plural = _("ویژگی پروژه ها")
+
+class Block(models.Model):
+    """Block Model"""
+    
+    title = models.CharField(max_length=125, null=False, blank=False, verbose_name="نام")
+    
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="blocks",verbose_name="پروژه")
+    
+    class Meta:
+        verbose_name = _("بلوک")
+        verbose_name_plural = _("بلوک ها")
+        
+class Block_Specification(models.Model):
+    """Specifications Model"""
+
+    key = models.CharField(
+        max_length=125, null=False, blank=False, verbose_name="مشخصه"
+    )
+    value = models.CharField(
+        max_length=225, null=False, blank=False, verbose_name="مقدار"
+    )
+
+    block = models.ForeignKey(
+        Block, on_delete=models.CASCADE, related_name="specs", verbose_name="بلوک"
+    )
+
+    def __str__(self):
+        return f"{self.project.title}-{self.key}"
+
+    class Meta:
+        verbose_name = _("مشخصه بلوک")
+        verbose_name_plural = _("مشخصات بلوک ها")

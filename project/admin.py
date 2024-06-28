@@ -30,6 +30,19 @@ class ProjectAdmin(admin.ModelAdmin):
     )
     inlines = [SpecificationInline, PropertyInline]
 
+class BlockSpecificationInline(admin.TabularInline):
+    model = models.Block_Specification
+    extra = 1
+
+class BlockAdmin(admin.ModelAdmin):
+    """Block Admin Model"""
+
+    list_display = ["id", "title"]
+    list_display_links = ["id", "title"]
+    search_fields = ["title"]
+    inlines = [BlockSpecificationInline]
+
 
 admin.site.register(models.Feature, FeatureAdmin)
 admin.site.register(models.Project, ProjectAdmin)
+admin.site.register(models.Block, BlockAdmin)

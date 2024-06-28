@@ -199,7 +199,7 @@ class Critic(models.Model):
         verbose_name="شماره موبایل",
     )
     email = models.EmailField(
-        max_length=125, null=False, blank=False, verbose_name="پست الکترونیک"
+        max_length=125, null=True, blank=True, verbose_name="پست الکترونیک"
     )
     text = models.CharField(
         max_length=1200, null=False, blank=False, verbose_name="متن پیام"

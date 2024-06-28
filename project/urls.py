@@ -7,6 +7,7 @@ app_name = "project"
 
 router = DefaultRouter()
 router.register("projects", views.ProjectViewSet)
+router.register("blocks", views.BlockViewSet)
 
 
 urlpatterns = [path("", include(router.urls))]
