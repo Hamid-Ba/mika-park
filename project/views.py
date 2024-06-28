@@ -28,9 +28,8 @@ class ProjectViewSet(
 
         return self.serializer_class
 
-class BlockViewSet(
-    mixins.RetrieveModelMixin, viewsets.GenericViewSet
-):
+
+class BlockViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     """Block View Set"""
 
     queryset = block_service.get_blocks()

@@ -68,9 +68,10 @@ class Email(models.Model):
         verbose_name = _("پست الکترونیک")
         verbose_name_plural = _("پست های الکترونیک")
 
+
 class Map(models.Model):
     """Map"""
-    
+
     map = models.URLField(
         max_length=500,
         blank=False,

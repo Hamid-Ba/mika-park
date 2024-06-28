@@ -66,7 +66,7 @@ class Project(models.Model):
         verbose_name="لینک گوگل مپ",
         error_messages={"invalid": "مقدار وارد شده صحیح نم باشد"},
     )
-    
+
     gallery = models.ManyToManyField(
         gallery_models.Gallery, related_name="projects", verbose_name="گالری"
     )
@@ -127,17 +127,23 @@ class Project_Property(models.Model):
         verbose_name = _("ویژگی پروژه")
         verbose_name_plural = _("ویژگی پروژه ها")
 
+
 class Block(models.Model):
     """Block Model"""
-    
-    title = models.CharField(max_length=125, null=False, blank=False, verbose_name="نام")
-    
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="blocks",verbose_name="پروژه")
-    
+
+    title = models.CharField(
+        max_length=125, null=False, blank=False, verbose_name="نام"
+    )
+
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE, related_name="blocks", verbose_name="پروژه"
+    )
+
     class Meta:
         verbose_name = _("بلوک")
         verbose_name_plural = _("بلوک ها")
-        
+
+
 class Block_Specification(models.Model):
     """Specifications Model"""
 

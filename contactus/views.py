@@ -31,15 +31,16 @@ class EmailListAPI(generics.ListAPIView):
 
     queryset = models.Email.objects.all()
     serializer_class = serializers.EmailSerializer
-    
+
+
 class MapAPI(generics.ListAPIView):
     """Map List View"""
 
     queryset = models.Map.objects.all()
     serializer_class = serializers.MapSerializer
-    
+
     def get_queryset(self):
         if models.Map.objects.count():
             self.queryset = models.Map.objects.last()
-        
+
         return super().get_queryset()

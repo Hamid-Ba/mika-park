@@ -58,6 +58,7 @@ class FeatureSerializer(serializers.ModelSerializer):
 
     #     return rep
 
+
 class BlockSpecificationSerializer(serializers.ModelSerializer):
     """BlockSpecification Serializer"""
 
@@ -72,10 +73,11 @@ class BlockListSerializer(serializers.ModelSerializer):
     """Block List Serializer"""
 
     specs = BlockSpecificationSerializer(many=True)
-    
+
     class Meta:
         model = models.Block
         fields = ["id", "title", "specs"]
+
 
 class ProjectSerializer(serializers.ModelSerializer):
     """Project Serializer"""

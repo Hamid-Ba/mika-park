@@ -30,9 +30,11 @@ class ProjectAdmin(admin.ModelAdmin):
     )
     inlines = [SpecificationInline, PropertyInline]
 
+
 class BlockSpecificationInline(admin.TabularInline):
     model = models.Block_Specification
     extra = 1
+
 
 class BlockAdmin(admin.ModelAdmin):
     """Block Admin Model"""

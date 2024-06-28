@@ -78,6 +78,7 @@ class CommunicationSerializer(serializers.ModelSerializer):
         model = models.Communication
         fields = "__all__"
 
+
 class CriticSerializer(serializers.ModelSerializer):
     """Critic Serializer"""
 

@@ -37,12 +37,14 @@ class EmailAdmin(admin.ModelAdmin):
     list_display_links = ["id"]
     list_editable = ["email"]
 
+
 class MapAdmin(admin.ModelAdmin):
     """Map Admin Model"""
 
     list_display = ["id", "map"]
     list_display_links = ["id"]
     list_editable = ["map"]
+
 
 admin.site.register(models.Message, MessageAdmin)
 admin.site.register(models.Address, AddressAdmin)
