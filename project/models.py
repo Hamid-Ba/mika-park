@@ -52,10 +52,18 @@ class Project(models.Model):
         null=False, upload_to=project_image_file_path, verbose_name="تصویر"
     )
     type = models.CharField(max_length=2, choices=Type.choices, default=Type.Processing)
+    view_3d = models.URLField(
+        max_length=500,
+        blank=True,
+        null=True,
+        verbose_name="لینک نمای ۳ بعدی",
+        error_messages={"invalid": "مقدار وارد شده صحیح نم باشد"},
+    )
     google_map_url = models.URLField(
         max_length=500,
         blank=True,
         null=True,
+        verbose_name="لینک گوگل مپ",
         error_messages={"invalid": "مقدار وارد شده صحیح نم باشد"},
     )
     
