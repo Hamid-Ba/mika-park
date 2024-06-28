@@ -58,3 +58,15 @@ class NewsletterMember(models.Model):
     class Meta:
         verbose_name = _("عضو خبرنامه")
         verbose_name_plural = _("اعضاء خبرنامه")
+        
+class Comment(models.Model):
+    """Comment Model"""
+    
+    is_suggest = models.BooleanField(default=True, verbose_name="آیا پیشنهاد میکنم ؟")
+    content = models.TextField(null=False, blank=False, verbose_name="متن")
+    full_name = models.CharField(max_length=225,null=True, blank=True, verbose_name="نام کامل")
+    created_date = models.DateField(auto_now_add=True, verbose_name="زمان ایجاد")
+
+    class Meta:
+        verbose_name = _("نظر مشتری")
+        verbose_name_plural = _("نظرات مشتریان")

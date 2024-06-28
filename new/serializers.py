@@ -33,3 +33,10 @@ class NewsletterMemberSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.NewsletterMember
         fields = "__all__"
+        
+class CommentSerializer(serializers.ModelSerializer):
+    """Comment Serializer"""
+
+    class Meta:
+        model = models.Comment
+        fields = "__all__"

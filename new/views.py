@@ -63,3 +63,14 @@ class SendNewsletterRequestAPI(generics.CreateAPIView):
 
     queryset = models.NewsletterMember.objects.all()
     serializer_class = serializers.NewsletterMemberSerializer
+
+class CommentView(generics.ListAPIView):
+    """List Of Comment View"""
+
+    queryset = models.Comment.objects.all()
+    serializer_class = serializers.CommentSerializer
+
+    def get_queryset(self):
+        return self.queryset.order_by(
+            "-created_date"
+        )

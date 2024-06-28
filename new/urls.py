@@ -22,4 +22,5 @@ urlpatterns = [
         views.SendNewsletterRequestAPI.as_view(),
         name="send_newsletter_request",
     ),
+    path("comments", views.CommentView.as_view(), name="comments-list"),
 ]
