@@ -67,3 +67,18 @@ class Email(models.Model):
     class Meta:
         verbose_name = _("پست الکترونیک")
         verbose_name_plural = _("پست های الکترونیک")
+
+class Map(models.Model):
+    """Map"""
+    
+    map = models.URLField(
+        max_length=500,
+        blank=False,
+        null=False,
+        verbose_name="لینک گوگل مپ",
+        error_messages={"invalid": "مقدار وارد شده صحیح نم باشد"},
+    )
+
+    class Meta:
+        verbose_name = _("مپ")
+        verbose_name_plural = _("مپ ها")

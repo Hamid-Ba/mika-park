@@ -44,3 +44,12 @@ class EmailSerializer(serializers.ModelSerializer):
 
         model = models.Email
         fields = "__all__"
+        
+class MapSerializer(serializers.ModelSerializer):
+    """Map Serializer"""
+
+    class Meta:
+        """Meta Class"""
+
+        model = models.Map
+        fields = "__all__"
