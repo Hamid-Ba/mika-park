@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     "contactus",
     "gallery",
     "new",
-    "project",
+    "project.apps.ProjectConfig",
     "siteinfo",
 ]
 

@@ -1,3 +1,5 @@
+import csv
+from django.conf import settings
 from rest_framework import serializers
 
 from gallery import serializers as gallery_serial
@@ -59,6 +61,24 @@ class FeatureSerializer(serializers.ModelSerializer):
     #     return rep
 
 
+class ChildChartSerializer(serializers.ModelSerializer):
+    """Child Chart Serializer"""
+
+    class Meta:
+        model = models.ChildChart
+        fields = "__all__"
+
+
+class MainChartSerializer(serializers.ModelSerializer):
+    """Main Chart Serializer"""
+
+    childs = ChildChartSerializer(many=True)
+
+    class Meta:
+        model = models.MainChart
+        fields = "__all__"
+
+
 class BlockSpecificationSerializer(serializers.ModelSerializer):
     """BlockSpecification Serializer"""
 
@@ -67,6 +87,17 @@ class BlockSpecificationSerializer(serializers.ModelSerializer):
 
         model = models.Block_Specification
         fields = "__all__"
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+
+        if instance.main_csv_data:
+            rep["main_chart"] = settings.BACK_URL + instance.main_csv_data.url
+
+        if instance.child_csv_data:
+            rep["child_chart"] = settings.BACK_URL + instance.child_csv_data.url
+
+        return rep
 
 
 class BlockListSerializer(serializers.ModelSerializer):
@@ -77,6 +108,17 @@ class BlockListSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Block
         fields = ["id", "title", "specs"]
+
+
+class BlockSerializer(BlockListSerializer):
+    """Block Serializer"""
+
+    charts = MainChartSerializer(many=True)
+
+    class Meta(BlockListSerializer.Meta):
+        """Meta Class"""
+
+        fields = BlockListSerializer.Meta.fields + ["charts"]
 
 
 class ProjectSerializer(serializers.ModelSerializer):

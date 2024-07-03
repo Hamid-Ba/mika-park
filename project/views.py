@@ -34,3 +34,9 @@ class BlockViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
 
     queryset = block_service.get_blocks()
     serializer_class = serializers.BlockListSerializer
+    
+    def get_serializer_class(self):
+        if self.action == "retrieve":
+            self.serializer_class = serializers.BlockSerializer
+        
+        return self.serializer_class

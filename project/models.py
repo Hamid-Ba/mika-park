@@ -16,6 +16,14 @@ def project_image_file_path(instance, filename):
     return os.path.join("uploads", "project", filename)
 
 
+def csv_file_path(instance, filename):
+    """Generate file path for media"""
+    ext = os.path.splitext(filename)[1]
+    filename = f"{uuid4()}.{ext}"
+
+    return os.path.join("uploads", "csv", filename)
+
+
 class Feature(models.Model):
     """Features Model"""
 
@@ -135,6 +143,14 @@ class Block(models.Model):
         max_length=125, null=False, blank=False, verbose_name="نام"
     )
 
+    main_csv_data = models.FileField(
+        null=True, blank=True, upload_to=csv_file_path, verbose_name="فایل csv اول"
+    )
+
+    child_csv_file = models.FileField(
+        null=True, blank=True, upload_to=csv_file_path, verbose_name="فایل csv دوم"
+    )
+
     project = models.ForeignKey(
         Project, on_delete=models.CASCADE, related_name="blocks", verbose_name="پروژه"
     )
@@ -164,3 +180,62 @@ class Block_Specification(models.Model):
     class Meta:
         verbose_name = _("مشخصه بلوک")
         verbose_name_plural = _("مشخصات بلوک ها")
+
+
+class MainChart(models.Model):
+    """Main Chart Model"""
+
+    index = models.PositiveBigIntegerField(
+        null=False, blank=False, verbose_name="شناسه"
+    )
+    label = models.CharField(
+        max_length=125, null=False, blank=False, verbose_name="عنوان"
+    )
+    percent = models.PositiveBigIntegerField(
+        null=False, blank=False, verbose_name="درصد"
+    )
+    color = models.CharField(
+        max_length=225, null=False, blank=False, verbose_name="رنگ"
+    )
+
+    block = models.ForeignKey(
+        Block, on_delete=models.CASCADE, related_name="charts", verbose_name="بلوک"
+    )
+
+    def __str__(self) -> str:
+        return f"{self.index} {self.label}"
+
+    class Meta:
+        verbose_name = _("نمودار اصلی")
+        verbose_name_plural = _("نمودارهای اصلی")
+
+
+class ChildChart(models.Model):
+    """Child Chart Model"""
+
+    index = models.PositiveBigIntegerField(
+        null=False, blank=False, verbose_name="شناسه"
+    )
+    label = models.CharField(
+        max_length=125, null=False, blank=False, verbose_name="عنوان"
+    )
+    percent = models.PositiveBigIntegerField(
+        null=False, blank=False, verbose_name="درصد"
+    )
+    color = models.CharField(
+        max_length=225, null=False, blank=False, verbose_name="رنگ"
+    )
+
+    main = models.ForeignKey(
+        MainChart,
+        on_delete=models.CASCADE,
+        related_name="childs",
+        verbose_name="زیرمجموعه",
+    )
+
+    def __str__(self) -> str:
+        return f"{self.index} {self.label}"
+
+    class Meta:
+        verbose_name = _("نمودار زیرمجموعه")
+        verbose_name_plural = _("نمودارهای زیرمجموعه")
