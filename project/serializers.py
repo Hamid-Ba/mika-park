@@ -88,17 +88,6 @@ class BlockSpecificationSerializer(serializers.ModelSerializer):
         model = models.Block_Specification
         fields = "__all__"
 
-    def to_representation(self, instance):
-        rep = super().to_representation(instance)
-
-        if instance.main_csv_data:
-            rep["main_chart"] = settings.BACK_URL + instance.main_csv_data.url
-
-        if instance.child_csv_data:
-            rep["child_chart"] = settings.BACK_URL + instance.child_csv_data.url
-
-        return rep
-
 
 class BlockListSerializer(serializers.ModelSerializer):
     """Block List Serializer"""
