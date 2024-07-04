@@ -227,7 +227,7 @@ class MainChart(models.Model):
     )
 
     type = models.ForeignKey(
-        ChartType, on_delete=models.CASCADE, related_name="charts", verbose_name="نمودار"
+        ChartType, null=True, blank=True,on_delete=models.CASCADE, related_name="charts", verbose_name="نمودار"
     )
 
     def __str__(self) -> str:
