@@ -143,21 +143,29 @@ class Block(models.Model):
         max_length=125, null=False, blank=False, verbose_name="نام"
     )
 
-    main_csv_data = models.FileField(
+    type_csv_file = models.FileField(
         null=True, blank=True, upload_to=csv_file_path, verbose_name="فایل csv اول"
+    )
+    
+    main_csv_file = models.FileField(
+        null=True, blank=True, upload_to=csv_file_path, verbose_name="فایل csv دوم"
     )
 
     child_csv_file = models.FileField(
-        null=True, blank=True, upload_to=csv_file_path, verbose_name="فایل csv دوم"
+        null=True, blank=True, upload_to=csv_file_path, verbose_name="فایل csv سوم"
     )
 
     project = models.ForeignKey(
         Project, on_delete=models.CASCADE, related_name="blocks", verbose_name="پروژه"
     )
 
+    def __str__(self) -> str:
+        return f"{self.project.title}-{self.title}"
+
     class Meta:
         verbose_name = _("بلوک")
         verbose_name_plural = _("بلوک ها")
+        
 
 
 class Block_Specification(models.Model):
@@ -181,6 +189,26 @@ class Block_Specification(models.Model):
         verbose_name = _("مشخصه بلوک")
         verbose_name_plural = _("مشخصات بلوک ها")
 
+class ChartType(models.Model):
+    """Chart Type Model"""
+
+    index = models.PositiveBigIntegerField(
+        null=False, blank=False, verbose_name="شناسه"
+    )
+    label = models.CharField(
+        max_length=125, null=False, blank=False, verbose_name="عنوان"
+    )
+
+    block = models.ForeignKey(
+        Block, on_delete=models.CASCADE, related_name="charts", verbose_name="بلوک"
+    )
+
+    def __str__(self) -> str:
+        return f"{self.index} {self.label}"
+
+    class Meta:
+        verbose_name = _("نمودار")
+        verbose_name_plural = _("نمودارها")
 
 class MainChart(models.Model):
     """Main Chart Model"""
@@ -198,8 +226,8 @@ class MainChart(models.Model):
         max_length=225, null=False, blank=False, verbose_name="رنگ"
     )
 
-    block = models.ForeignKey(
-        Block, on_delete=models.CASCADE, related_name="charts", verbose_name="بلوک"
+    type = models.ForeignKey(
+        ChartType, on_delete=models.CASCADE, related_name="charts", verbose_name="نمودار"
     )
 
     def __str__(self) -> str:

@@ -77,6 +77,15 @@ class MainChartSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.MainChart
         fields = "__all__"
+        
+class TypeChartSerializer(serializers.ModelSerializer):
+    """Type Chart Serializer"""
+
+    charts = MainChartSerializer(many=True)
+
+    class Meta:
+        model = models.ChartType
+        fields = "__all__"
 
 
 class BlockSpecificationSerializer(serializers.ModelSerializer):
@@ -102,7 +111,7 @@ class BlockListSerializer(serializers.ModelSerializer):
 class BlockSerializer(BlockListSerializer):
     """Block Serializer"""
 
-    charts = MainChartSerializer(many=True)
+    charts = TypeChartSerializer(many=True)
 
     class Meta(BlockListSerializer.Meta):
         """Meta Class"""
