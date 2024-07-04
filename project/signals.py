@@ -1,6 +1,4 @@
 import csv
-import codecs
-
 from django.db.models.signals import post_save, post_delete, pre_save
 from django.dispatch import receiver
 
@@ -11,7 +9,7 @@ from project.models import Block, MainChart, ChildChart
 def generate_chrats(sender, instance, created, **kwargs):
     """Generate Charts"""
     if created:
-        with codecs.open(instance.main_csv_data.path, 'rU', 'utf-16') as main_csv_file:
+        with open(instance.main_csv_data.path, "r", encoding="utf-8") as main_csv_file:
             reader = csv.DictReader(main_csv_file)
             for row in reader:
                 main = MainChart.objects.create(
@@ -23,12 +21,16 @@ def generate_chrats(sender, instance, created, **kwargs):
                 )
                 main.save()
 
-                with codecs.open(instance.child_csv_file.path, 'rU', 'utf-16') as child_csv_file:
+                with open(instance.child_csv_file.path, "r", encoding="utf-8") as child_csv_file:
                     child_reader = csv.DictReader(child_csv_file)
                     for row in child_reader:
-                        main_id = int(row["main_id"])
+                        main_id = 0
+                        try:
+                            main_id = int(row["main_id"])
+                        except:
+                            pass
 
-                        if main_id == main.index:
+                        if main_id == int(main.index):
                             child = ChildChart.objects.create(
                                 index=row["index"],
                                 label=row["label"],

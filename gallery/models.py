@@ -37,7 +37,7 @@ class Gallery(models.Model):
     def __str__(self):
         if self.title:
             return self.title
-        return self.image
+        return self.image.name
 
     class Meta:
         verbose_name = _("گالری")
@@ -57,7 +57,7 @@ class Media(models.Model):
     def __str__(self):
         if self.title:
             return self.title
-        return self.file
+        return self.file.name
 
     class Meta:
         verbose_name = _("مدیا")
