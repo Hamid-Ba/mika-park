@@ -69,6 +69,8 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
     "http://45.156.186.124",
     "https://45.156.186.124",
+    "http://mikapark.ir",
+    "https://mikapark.ir",
     # "http://api.cafesiran.ir",
     # "https://api.cafesiran.ir",
     # "http://cafesiran.ir",
@@ -196,4 +198,7 @@ CKEDITOR_CONFIGS = {
 
 KAVENEGAR_API_KEY = ""
 
-BACK_URL = "http://45.156.186.124:8080"
+if DEBUG:
+    BACK_URL = "http://45.156.186.124:8080"
+else:
+    BACK_URL = "http://api.mikapark.ir"
