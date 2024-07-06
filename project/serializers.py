@@ -127,7 +127,8 @@ class ProjectSerializer(serializers.ModelSerializer):
     features = FeatureSerializer(many=True)
     specs = SpecificationsSerializer(many=True)
     props = PropertySerializer(many=True)
-    blocks = BlockListSerializer(many=True)
+    blocks = serializers.SerializerMethodField()
+    # blocks = BlockListSerializer(many=True)
 
     class Meta:
         """Meta Class"""
@@ -135,6 +136,17 @@ class ProjectSerializer(serializers.ModelSerializer):
         model = models.Project
         fields = "__all__"
 
+    def get_blocks(self, instance):
+        blocks = models.Block.objects.filter(project=instance).order_by("id")
+        return BlockListSerializer(blocks, many=True).data
+    
+    # def to_representation(self, instance):
+    #     rep = super().to_representation(instance)
+        
+    #     blocks = models.Block.objects.filter(project=instance).order_by("-id")
+    #     self["blocky"] = BlockListSerializer(blocks, many=True).data
+        
+    #     return rep
     # def to_representation(self, instance):
     #     rep = super().to_representation(instance)
     #     relational_products = (
