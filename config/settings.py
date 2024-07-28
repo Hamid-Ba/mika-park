@@ -201,4 +201,4 @@ KAVENEGAR_API_KEY = ""
 if DEBUG:
     BACK_URL = "http://45.156.186.124:8080"
 else:
-    BACK_URL = "http://api.mikapark.ir"
+    BACK_URL = "https://api.mikapark.ir"
