@@ -26,7 +26,7 @@ class MediaTest(TestCase):
 
     def test_create_media_model_should_work_properly(self):
         """Test Create Media Model"""
-        media = {"title": "New Pic", "file": "no_image.jpg"}
+        media = {"title": "New Pic", "thumbnail": "no_image.jpg","file": "no_image.jpg"}
 
         created_media = models.Media.objects.create(**media)
 

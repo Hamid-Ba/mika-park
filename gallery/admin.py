@@ -22,10 +22,12 @@ class GalleryAdmin(admin.ModelAdmin):
 class MediaAdmin(admin.ModelAdmin):
     """Media Admin Model"""
 
-    list_display = ["id", "title", "file_path"]
+    list_display = ["id", "title","is_show", "file_path"]
     list_display_links = ["id", "title"]
     sortable_by = ["title"]
     search_fields = ["title"]
+    list_filter = ["is_show"]
+    list_editable = ["is_show"]
 
     def file_path(self, obj):
         return obj.file.path
