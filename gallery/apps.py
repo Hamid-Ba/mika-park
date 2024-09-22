@@ -6,3 +6,6 @@ class GalleryConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
     name = "gallery"
     verbose_name = _("گالری")
+
+    def ready(self):
+        import gallery.signals
